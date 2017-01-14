@@ -11,10 +11,13 @@ Rails.application.routes.draw do
 
   get '/projects', to: 'projects#index'
 
+<<<<<<< HEAD
   get '/projects/new', to: 'projects#new' 
 
   get '/project/:id', to: 'projects#show'
 
   post '/projects', to: 'projects#create'
 
+=======
+>>>>>>> a7ae43eb209a92e74d12611c0b605dd24660452f
 end
