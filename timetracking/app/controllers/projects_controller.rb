@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
 		@projects = Project.order(created_at: :desc)
 											 .limit(10)
 	end
-<<<<<<< HEAD
 	def show
 		@project = Project.find_by(id: params[:id])
 		if @project.present?
@@ -24,6 +23,4 @@ class ProjectsController < ApplicationController
 
 		redirect_to "/project/#{@project.id}"
 	end
-=======
->>>>>>> a7ae43eb209a92e74d12611c0b605dd24660452f
 end

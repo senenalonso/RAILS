@@ -1,0 +1,7 @@
+Contact.create!(name: "Name 1", address: "Address 1", phonenumber: "Phone Number 1", address: "email1@ironhack.com")
+Contact.create!(name: "Name 2", address: "Address 2", phonenumber: "Phone Number 2", address: "email2@ironhack.com")
+Contact.create!(name: "Name 3", address: "Address 3", phonenumber: "Phone Number 3", address: "email3@ironhack.com")
+Contact.create!(name: "Name 4", address: "Address 4", phonenumber: "Phone Number 4", address: "email4@ironhack.com")
+Contact.create!(name: "Name 5", address: "Address 5", phonenumber: "Phone Number 5", address: "email5@ironhack.com")
+Contact.create!(name: "Name 6", address: "Address 6", phonenumber: "Phone Number 6", address: "email6@ironhack.com")
+Contact.create!(name: "Name 7", address: "Address 7", phonenumber: "Phone Number 7", address: "email7@ironhack.com")
