@@ -1,10 +1,10 @@
-Project.create!(name: "Project 1", description: "Description 1")
-Project.create!(name: "Project 2", description: "Description 2")
-Project.create!(name: "Project 3", description: "Description 3")
-Project.create!(name: "Project 4", description: "Description 4")
-Project.create!(name: "Project 5", description: "Description 5")
-Project.create!(name: "Project 6", description: "Description 6")
-Project.create!(name: "Project 7", description: "Description 7")
-Project.create!(name: "Project 8", description: "Description 8")
-Project.create!(name: "Project 9", description: "Description 9")
-Project.create!(name: "Project 10", description: "Description 10")
+5.times do |index|
+		project = Project.create!(name: "Project {index}",
+															description: "Description {index}")
+		2.times do |index2|
+			project.time_entries.create(hours: index2,
+																 minutes: index*index2,
+																 date: Date.today,
+																 comments: "Comment {index2}")
+		end
+end
