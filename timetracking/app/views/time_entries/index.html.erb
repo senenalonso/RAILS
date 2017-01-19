@@ -5,7 +5,10 @@
 	<li>
 		<%= e.hours %> h
 		<%= e.minutes %> m - 
+		<%= e.comments %> - 
 		<%= e.date %>
+		<input type="button" onclick="location.href='/projects/<%=@project.id%>/time_entries/<%=e.id%>/edit';" value="Edit" />
+		<%= button_to "EDIT", project_time_entry_edit_path(@project, e), :method => "get" %>
 	</li>
 	<% end %>
 </ul>

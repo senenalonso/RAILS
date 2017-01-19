@@ -5,18 +5,30 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'site#contact'
 
+
+
   get '/calculator', to: 'site#calculator'
   post '/calculate', to: 'site#calculate'
 
-  get '/projects', to: 'projects#index'
 
-  get '/projects/new', to: 'projects#new' 
 
-  get '/project/:id', to: 'projects#show'
+  get   '/projects', to: 'projects#index'
 
-  post '/projects', to: 'projects#create'
+  get   '/projects/new', to: 'projects#new' 
 
-  get '/projects/:project_id/time_entries', to: 'time_entries#index'
+  get   '/project/:id', to: 'projects#show'
+
+  post  '/projects', to: 'projects#create'
+
+  get   '/projects/:project_id/time_entries', to: 'time_entries#index'
+
+  get   '/projects/:project_id/time_entries/new', to: 'time_entries#new'
+
+  post  '/projects/:project_id/time_entries', to: 'time_entries#create', as: :project_time_entries
+
+  get   '/projects/:project_id/time_entries/:time_entry_id/edit', to: 'time_entries#edit', as: :project_time_entry_edit
+
+  patch '/projects/:project_id/time_entries/:time_entry_id', to: 'time_entries#update', as: :project_time_entry
 
 end
 
