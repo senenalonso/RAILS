@@ -1,7 +1,21 @@
 <ul>
-	<% @contacts.each do |contact| %>
+	<% @contacts.each do |c| %>
 			<li>
-				<%= contact.name %> / <%= contact.address %> / <%= contact.phonenumber %> / <%= contact.email %> / 
+				<%= c.name %> / <%= c.address %> / <%= c.phonenumber %> / <%= c.email %>
+				<form action="/contacts/favorite" method="POST">
+				<%if c.favorite == false%>
+  				<input type="hidden" name="contactId" value="<%= c.id %>">
+  				<input type="hidden" name="favorite_action" value="add">
+  				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<button type="submit">Add to favorites</button>
+				<% else %>
+  				<input type="hidden" name="contactId" value="<%= c.id %>">
+  				<input type="hidden" name="favorite_action" value="delete">
+  				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<button type="submit">Delete from favorites</button>
+				<% end %>
+				</form>
+				<%= image_tag c.ºavatar.url(:thumb) %>
 			</li>
 	<% end %>	
 </ul>
