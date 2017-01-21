@@ -1,0 +1,23 @@
+<h1>User details</h1>
+
+<%= render "/statics/flash" %>
+
+<p>Name: <%=@user.name%></p>
+<p>Email: <%=@user.email%></p>
+<p>Products:</p>
+<ul>
+	<% @products.each do |p| %>
+	<li>
+		<%= p.title %> h
+		<%= p.description %> m - 
+		<%= p.deadline %>
+		<input type="button" onclick="location.href='/users/<%=@user.id%>/products/<%=p.id%>';" value="Show details" />
+		<input type="button" onclick="location.href='/products/<%=p.id%>';" value="Bid!!" />
+		<%= link_to("Delete", user_products_path(@user, p), method: :delete, data: {confirm: 'Are you sure?'}) %>
+	</li>
+	<% end %>
+</ul>
+
+<h2>Add new product:</h2>
+
+<%= render "/products/form" %>

@@ -1,0 +1,40 @@
+
+<h1>Product details</h1>
+
+<%= render "/statics/flash" %>
+
+<p>
+		<b>Title:</b> <%= @product.title %><br>
+		<b>Description:</b> <%= @product.description %><br>
+		<b>Deadline:</b> <%= @product.deadline %><br>
+</p>
+
+<% if @product.deadline >= DateTime.now %>
+	<h2>Bid for the product:</h2>
+
+	<%= form_for [@product, @bid] do |f| %> 
+	  <%= f.label :amount %>:
+	  <%= f.number_field :amount %> 
+	  <br> 
+	  <%= label_tag :email %>: 
+	  <%= text_field_tag :email%> 
+	  <br>   
+
+	  <%= f.submit 'Bid' %> 
+<% end %> 
+
+<%else%>
+	<h2>The auction is over!!</h2>
+	<p>The winner is <%=@bid_history[0][:user]%> with a bid of $<%=@bid_history[0][:amount]%>
+<%end%>
+
+
+
+<h2>Bid history</h2>
+<ul>
+	<% @bid_history.each do |b| %>
+	<li>
+		The user <%= b[:user] %> bid $<%=b[:amount]%>
+	</li>
+	<% end %>
+</ul>

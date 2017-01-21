@@ -1,0 +1,13 @@
+<h1>Product details</h1>
+
+<%= render "/statics/flash" %>
+
+<p>
+		<%= @product.title %> h
+		<%= @product.description %> m - 
+		<%= @product.deadline %>
+</p>
+
+<h2>Modify the product:</h2>
+
+<%= render "form" %>
