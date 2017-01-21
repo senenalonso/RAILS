@@ -1,10 +1,13 @@
 class TimeEntriesController < ApplicationController
+
 	def index
 		@entries = project.time_entries.last_month
 	end
+
 	def new
 		@entry = project.time_entries.new
 	end
+
 	def create
 		@entry = project.time_entries.new(
 								hours: params[:time_entry][:hours],
@@ -18,9 +21,11 @@ class TimeEntriesController < ApplicationController
 			render 'new'
 		end
 	end
+
 	def edit
 		time_entry
 	end
+	
 	def update
 		if time_entry.update(time_entry_params)
 			redirect_to "/projects/#{project.id}/time_entries"
@@ -28,6 +33,13 @@ class TimeEntriesController < ApplicationController
 			render 'edit'
 		end
 	end
+
+	def delete
+		time_entry.delete
+		redirect_to "/projects/#{project.id}/time_entries"		
+	end
+
+
 
 	private
 
