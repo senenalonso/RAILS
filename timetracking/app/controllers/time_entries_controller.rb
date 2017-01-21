@@ -16,8 +16,10 @@ class TimeEntriesController < ApplicationController
 								comments: params[:time_entry][:comments]
 							)
 		if @entry.save
+			message("Time entry created successfully", 0) 
 			redirect_to "/projects/#{project.id}/time_entries"
 		else 
+			message("Ups!! Try again!!", 0) 
 			render 'new'
 		end
 	end
@@ -27,9 +29,11 @@ class TimeEntriesController < ApplicationController
 	end
 	
 	def update
-		if time_entry.update(time_entry_params)
+		if time_entry.update(time_entry_params)			
+			message("Time entry updated successfully", 0) 
 			redirect_to "/projects/#{project.id}/time_entries"
 		else 
+			message("Ups!! Try again!!", 0) 
 			render 'edit'
 		end
 	end
@@ -53,5 +57,21 @@ class TimeEntriesController < ApplicationController
 
 	def time_entry_params
 		params.require(:time_entry).permit(:hours, :minutes, :date, :comments)
+	end
+
+	def message(text, option)
+		if option==1
+			alert(text)
+		else
+			notice(text)
+		end
+	end
+
+	def notice(text)
+		flash[:notice] = text 
+	end
+
+	def alert(text)
+		flash[:alert] = text
 	end
 end
