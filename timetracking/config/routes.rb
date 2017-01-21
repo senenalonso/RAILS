@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'site#contact'
 
-
-
   get '/calculator', to: 'site#calculator'
   post '/calculate', to: 'site#calculate'
 
@@ -32,6 +30,7 @@ Rails.application.routes.draw do
 
   # delete '/projects/:project_id/time_entries/:time_entry_id', to: 'time_entries#delete'
 
+  
   resources :projects, only: [:index, :new, :show, :create] do
     resources :time_entry, except: [:show]
   end
