@@ -8,9 +8,11 @@
 <ul>
 	<% @products.each do |p| %>
 	<li>
-		<%= p.title %> h
-		<%= p.description %> m - 
-		<%= p.deadline %>
+<p>
+		<b>Title:</b> <%= p.title %><br>
+		<b>Description:</b> <%= p.description %><br>
+		<b>Deadline:</b> <%= p.deadline %><br>
+</p>
 		<input type="button" onclick="location.href='/users/<%=@user.id%>/products/<%=p.id%>';" value="Show details" />
 		<input type="button" onclick="location.href='/products/<%=p.id%>';" value="Bid!!" />
 		<%= link_to("Delete", user_products_path(@user, p), method: :delete, data: {confirm: 'Are you sure?'}) %>

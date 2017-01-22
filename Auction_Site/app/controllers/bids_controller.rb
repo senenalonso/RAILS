@@ -1,9 +1,10 @@
 class BidsController < ApplicationController
 	include ApplicationHelper
 	def create
-		user = User.getIdByEmail(params[:email])
-		product = Product.find(params[:product_id])
-		if user.present?
+
+		if session[:user_id]
+			user = User.find(session[:user_id])		
+			product = Product.find(params[:product_id])
 			if params[:bid][:amount].to_i > getMaxBidForProduct(product)
 				
 				@bid = product.bids.new(
@@ -25,8 +26,8 @@ class BidsController < ApplicationController
 				redirect_to product_path(product) 
 			end
 		else
-			message("Ups!! The email is invalid!!", 0)
-			redirect_to product_path(product) 
+			message("Log in is mandatory!!", 0)
+			redirect_to home_path 
 		end
 	end
 

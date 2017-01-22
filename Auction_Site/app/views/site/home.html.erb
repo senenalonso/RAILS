@@ -1,0 +1,17 @@
+<h1>Welcome to Auctions Site</h1>
+
+<h1>Log in</h1>
+
+<%= render "/statics/flash" %>
+
+<div class="row">
+	<%=form_tag user_login_path do %>
+
+		Email: <%= text_field_tag :email %>
+		Password: <%= password_field_tag :password %>
+		<%= submit_tag "Submit" %>
+
+	<% end %>
+
+  <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+</div>

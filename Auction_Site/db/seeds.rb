@@ -10,3 +10,5 @@
 													 )
 		end
 end
+
+User.update(password: "password")

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	include ApplicationHelper
+
 	def index
 		@users = User.order(created_at: :desc)
 											 .limit(10)
@@ -22,12 +24,23 @@ class UsersController < ApplicationController
 			)
 		@user.save
 
-		redirect_to "/users/#{@user.id}"
+		redirect_to users_path(@user)
 	end
 	def destroy
 		user.destroy
 
-		redirect_to "/users"
+		redirect_to users_path
+	end
+
+	def login
+		user = User.checkUser?(params[:email],params[:password])
+		if user
+			session[:user_id] = user
+			redirect_to "/users"
+		else
+			message("Invalid email or password!!",0)
+			redirect_to home_path
+		end
 	end
 
 
@@ -36,5 +49,9 @@ class UsersController < ApplicationController
 	def user
 		@user = User.find_by(id: params[:id])
 	end
+
+	def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 
 end
