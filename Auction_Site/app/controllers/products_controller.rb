@@ -76,6 +76,7 @@ class ProductsController < ApplicationController
 
 	def bid_history
 		bids = product.bids.all.order(amount: :desc)
+		binding.pry
 		@bid_history = bids.map { |b|	{"amount": b.amount, "user":User.getNameById(b.user_id)}  }
 	end
 end
