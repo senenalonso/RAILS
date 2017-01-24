@@ -1,4 +1,6 @@
 <h1><%= @project.name%></h1>
+<br>
+<%=image_tag @project.logo.url(:thumb) %>
 
 <%= render "flash" %>
 
@@ -11,7 +13,7 @@
 		<%= e.date %>
 		<input type="button" onclick="location.href='/projects/<%=@project.id%>/time_entries/<%=e.id%>/edit';" value="Edit" />
 		<%= link_to("Delete", project_time_entry_path(@project, e), method: :delete, data: {confirm: 'Are you sure?'}) %>
-		<%= button_to "EDIT", project_time_entry_edit_path(@project, e), :method => "get" %>
+		<%= button_to "EDIT", edit_project_time_entry_path(@project, e), :method => "get" %>
 	</li>
 	<% end %>
 </ul>

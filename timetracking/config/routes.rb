@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   
   resources :projects, only: [:index, :new, :show, :create] do
-    resources :time_entry, except: [:show]
+    resources :time_entries, except: [:show]
   end
 
 
