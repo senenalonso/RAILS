@@ -1,0 +1,8 @@
+<ul>
+	<% @people.each do |person| %>
+			<li>
+				<%= person.name %> 
+		<input type="button" onclick="location.href='/people/<%=person.id%>/assign';" value="Assing to projects" />
+			</li>
+	<% end %>	
+</ul>

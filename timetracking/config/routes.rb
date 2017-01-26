@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/home', to: 'site#home'
@@ -35,6 +36,6 @@ Rails.application.routes.draw do
     resources :time_entries, except: [:show]
   end
 
-
+  resources :people
 end
 

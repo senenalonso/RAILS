@@ -1,4 +1,13 @@
 <p><b>Name: <%= @project.name %></b></p>
 <p><%= @project.description %></p>
 <%=image_tag @project.logo.url(:medium) %>
+<br>
+Personal asigned:
+	<ul>
+	<%@project.people.each do |p|%>
+		<li>
+			<%= p.name%>
+		</li>
+	<%end%>
+	</ul>
 

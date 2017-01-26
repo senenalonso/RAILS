@@ -1,0 +1,13 @@
+<p><b>Name: <%= @person.name %></b></p>
+<p><%= @person.email%></p>
+
+	Projects assigned:
+
+	<ul>
+	<%@person.projects.each do |p|%>
+		<li>
+			<%= p.name%>
+		</li>
+	<%end%>
+	</ul>
+
