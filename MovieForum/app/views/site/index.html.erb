@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<div class="text-center align-middle">
+	<h1>Welcome to Movie Forum !!!</h1>
+	<br>
+	<div class="form">
+	  <%= form_tag(search_movies_path, :method => "post", :class => "form-inline", id: "search-form") do %>
+	    <%= text_field_tag :search, params[:search], placeholder: "Search Movie", size: 50, class: 'form-control' %>
+	    <%= submit_tag "Search", class: 'btn btn-primary' %>
+	  <% end %>
+	</div>
+</div>
+
+<%if @movies.present?
+	%>
+<div class="results">
+	<h2>Results:</h2>	
+</div>
+<table id="resultsTable" class="table table-striped" >  
+        <thead>  
+          <tr>  
+            <th>Title</th>  
+            <th>Year</th>  
+            <th>Synopsis</th>  
+            <th>Action</th> 
+          </tr>  
+        </thead>  
+        <tbody>  
+        <%@movies.each do |movie|%>
+          <tr>  
+            <td><%=movie.title%></td>  
+            <td><%=movie.year%></td> 
+            <td><%=truncate(movie.plot)%></td> 
+            <td><input type="button" onclick="location.href='/movies/<%=movie.id%>';" value="Start a discussion" class="btn btn-primary" /></td> 
+          </tr>  
+        <% end%> 
+        </tbody>  
+      </table>  
+	  </div>
+<script>
+$(document).ready(function(){
+    $('#resultsTable').dataTable();
+});
+</script>
+<%end%>
