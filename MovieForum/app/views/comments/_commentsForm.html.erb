@@ -1,0 +1,23 @@
+        <div class="form">
+          <%= form_tag(comments_path, method:"post", class: "form-horizontal", id: "comment-form") do %> 
+          <legend>Comments &amp; Responses</legend>
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="user">Username: </label>  
+              <div class="col-md-6">
+                <%= text_field_tag :user, params[:user], placeholder: "Type your username", class: 'form-control input-md', required: true %>
+              </div>
+            </div>
+            <div class="form-group">                
+              <label class="col-md-2 control-label" for="commentText">Comment:</label>
+              <div class="col-md-6">   
+                <%= text_area_tag :commentText, params[:commentText], placeholder: "Write your comment", class: 'form-control textarea-md'%>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="comment_button"></label>
+              <div class="col-md-6">
+                <%= submit_tag "Send comment", class: 'btn btn-primary' %>
+              </div>
+            </div>
+          <% end %>
+        </div>

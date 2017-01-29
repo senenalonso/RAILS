@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
 	has_many :comments
 
 	def self.getMoviesByTitle(title)
-		@movies = where('title > ?', title)	
+		@movies = where('title like ?', "%#{title}%")	
 
 		if @movies.empty?
 			@list_imdb = Imdb::Search.new(title).movies

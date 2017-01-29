@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 		@movie = Movie.getById(params[:id])
 
 		if @movie
+			@comments = Comment.getCommentsForMovie(@movie.id)
 			render 'movies/show', layout: 'movie'
 		else
 			render 'site/index'
